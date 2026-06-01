@@ -4,8 +4,8 @@
 
 <h2>Shopping Cart</h2>
 
-<input id="pname" placeholder="Product Name"><br><br>
-<input id="price" type="number" placeholder="Price"><br><br>
+<input type="text" id="name" placeholder="Product Name">
+<input type="text" id="price" placeholder="Price">
 
 <button onclick="add()">Add</button>
 <button onclick="total()">Total</button>
@@ -13,43 +13,21 @@
 <p id="result"></p>
 
 <script>
-let prices=[];
+let prices = [];
 
-function add(){
-    let n=document.getElementById("pname").value;
-    let p=Number(document.getElementById("price").vae);
-
-    if(n=="" || p<=0){
-        result.innerHTML="Invalid Input";
-        return;
-    }
-
+function add() {
+    let p = Number(document.getElementById("price").value);
     prices.push(p);
-    result.innerHTML += n+" - ₹"+p+"<br>";
-
-    function add(){
-    let n=document.getElementById("pname").value;
-    let p=Number(document.getElementById("price").value);
-
-    if(n=="" || p<=0){
-        result.innerHTML="Invalid Input";
-        return;
-    }
-
-    prices.push(p);
-    result.innerHTML += n+" - ₹"+p+"<br>";
-
-    document.getElementById("pname").value = "";
-    document.getElementById("price").value = "";
-}
+    result.innerHTML = "Product Added";
 }
 
-function total(){
-    let sum=0;
-    for(let p of prices) sum+=p;   // iterable
-    result.innerHTML += "<br>Total: ₹"+sum;
+function total() {
+    let sum = 0;
+    for(let x of prices) {
+        sum += x;
+    }
+    result.innerHTML = "Total = " + sum;
 }
 </script>
-
 </body>
 </html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Fibonacci Series</h2>
+
+<input id="num" placeholder="Enter number">
+<button onclick="show()">Generate</button>
+
+<p id="result"></p>
+
+<script>
+function fib(n){
+    return n<2 ? n : fib(n-1)+fib(n-2);
+}
+
+function show(){
+    let n=+document.getElementById("num").value;
+    let s="";
+
+    for(let i=0;i<n;i++)
+        s+=fib(i)+" ";
+
+    result.innerHTML=s;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>ATM Withdrawal</h2>
+
+<input id="amt" placeholder="Amount">
+<button onclick="withdraw()">Withdraw</button>
+
+<p id="result"></p>
+
+<script>
+let balance = 5000;
+
+function withdraw(){
+    try{
+        let a = Number(document.getElementById("amt").value);
+
+        if(a <= 0) throw "Invalid Amount";
+        if(a > balance) throw "Insufficient Balance";
+
+        balance -= a;
+        result.innerHTML = "Balance: ₹" + balance;
+    }
+    catch(e){
+        result.innerHTML = e;
+    }
+}
+</script>
+
+</body>
+</html>
