@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>User Registration</h2>
+
+<input type="text" id="u" placeholder="Username" oninput="validate()"><br><br>
+<input type="password" id="p" placeholder="Password" oninput="validate()"><br><br>
+
+<p id="msg">Enter details</p>
+<button onclick="register()">Register</button>
+
+<script>
+function User(u,p){
+    this.username=u;
+    this.password=p;
+}
+
+function validate(){
+    let u=document.getElementById("u").value;
+    let p=document.getElementById("p").value;
+    let m=document.getElementById("msg");
+
+    if(u.length<5) m.innerHTML="Username must be 5+ chars";
+    else if(p.length<6) m.innerHTML="Password must be 6+ chars";
+    else if(!p.includes("@")) m.innerHTML="Password must contain @";
+    else m.innerHTML="Valid Input";
+}
+
+function register(){
+    let u=document.getElementById("u").value;
+    let p=document.getElementById("p").value;
+
+    if(u.length>=5 && p.length>=6 && p.includes("@")){
+        let user=new User(u,p);
+        document.getElementById("msg").innerHTML=
+        "Registered: "+user.username.toUpperCase();
+    }
+}
+</script>
+
+</body>
+</html>

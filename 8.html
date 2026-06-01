@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Kanbad Board</h2>
+
+<input id="task">
+<button onclick="addTask()">Add</button>
+
+<div id="todo">
+<h3>To Do</h3>
+</div>
+
+<div id="progress">
+<h3>In Progress</h3>
+</div>
+
+<div id="done">
+<h3>Done   </h3>
+</div>
+
+<script>
+
+let drag;
+
+function addTask(){
+
+ let t=document.createElement("div");
+
+ t.innerText=task.value;
+ t.draggable=true;
+
+ t.ondragstart=()=>drag=t;
+
+ todo.appendChild(t);
+
+ task.value="";
+}
+
+["todo","progress","done"].forEach(id=>{
+
+ let c=document.getElementById(id);
+
+ c.ondragover=e=>e.preventDefault();
+
+ c.ondrop=()=>c.appendChild(drag);
+
+});
+
+</script>
+
+</body>
+</html>

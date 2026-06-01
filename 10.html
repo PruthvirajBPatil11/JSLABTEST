@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Cinema Seat Booking</h2>
+
+<div id="seats"></div>
+
+<p>Selected Seats: <span id="count">0</span></p>
+
+<button onclick="bookSeats()">Book Seats</button>
+
+<br><br>
+
+<input type="number" id="cancel" placeholder="Seat No">
+<button onclick="cancelSeat()">Cancel Seat</button>
+
+<script>
+
+let selected=[], booked=[];
+
+for(let i=1;i<=20;i++){
+    let b=document.createElement("button");
+    b.innerText=i;
+
+    b.onclick=function(){
+            selected.push(i);
+            b.style.background="yellow";
+        
+        count.innerText=selected.length;
+    };
+
+    seats.appendChild(b);
+}
+
+function bookSeats(){
+
+    booked.push(...selected);
+
+    document.querySelectorAll("#seats button")
+    .forEach(b=>{
+        if(selected.includes(+b.innerText))
+            b.style.background="red";
+    });
+
+    alert("Payment Successful\nSeats Booked: "+selected);
+
+    selected=[];
+    count.innerText=0;
+}
+
+function cancelSeat(){
+
+    let s=+document.getElementById("cancel").value;
+
+
+    document.querySelectorAll("#seats button")
+    .forEach(b=>{
+        if(+b.innerText==s)
+            b.style.background="";
+    });
+
+    alert("Seat Cancelled");
+}
+
+</script>
+
+</body>
+</html>

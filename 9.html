@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Event Propagation Debugger Tool</h2>
+<p>Click on the text to observe capturing and bubbling phases.</p>
+
+<button onclick="clearLog()">Clear Log</button>
+<div id="outer">
+    OUTER
+    <div id="middle">
+        MIDDLE
+        <div id="inner">
+            INNER
+        </div>
+    </div>
+</div>
+
+<div id="log"></div>
+
+<script>
+
+const log=document.getElementById("log");
+
+["outer","middle","inner"].forEach(id=>{
+
+    let element=document.getElementById(id);
+
+    element.addEventListener("click",function(){
+        show("Capturing : "+id);
+    });
+
+    element.addEventListener("click",function(){
+        show("Bubbling : "+id);
+    });
+
+});
+
+function show(msg){
+    log.innerHTML+=msg+"<br>";
+}
+
+function clearLog(){
+    log.innerHTML="";
+}
+
+</script>
+
+</body>
+</html> 

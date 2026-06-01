@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Customer Feedback System</h2>
+
+<form id="form">
+    <input type="text" id="name" placeholder="Name">
+    <input type="text" id="feedback" placeholder="Feedback">
+    <button type="submit">Submit</button>
+</form>
+
+<div id="list"></div>
+
+<script>
+
+document.getElementById("form").onsubmit=function(e){
+    e.preventDefault();
+    let n=document.getElementById("name").value;
+    let f=document.getElementById("feedback").value;
+
+    let card=document.createElement("div");
+
+    card.innerHTML=
+    n+" - "+f+
+    " <button class='edit'>Edit</button>"+
+    " <button class='del'>Delete</button>";
+
+    document.getElementById("list").appendChild(card);
+
+    document.getElementById("form").reset();
+};
+
+document.getElementById("list").onclick=function(e){
+
+    let card=e.target.parentElement;
+
+    if(e.target.className=="del")
+        card.remove();
+
+    if(e.target.className=="edit"){
+
+        let d=card.firstChild.textContent.split(" - ");
+
+        document.getElementById("name").value=d[0];
+        document.getElementById("feedback").value=d[1];
+
+        card.remove();
+    }
+};
+
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Employee Payroll System</h2>
+
+<input id="name" placeholder="Employee Name"><br><br>
+<input id="salary" type="number" placeholder="Basic Salary"><br><br>
+
+<button onclick="showSalary()">Calculate</button>
+
+<p id="result"></p>
+
+<script>
+class Employee{
+    constructor(name,salary){
+        this.name=name;
+        this.salary=salary;
+    }
+    netSalary(){
+        return this.salary * 1.3; // +20% HRA +10% DA
+    }
+}
+
+function showSalary(){
+    let n=document.getElementById("name").value;
+    let s=Number(document.getElementById("salary").value);
+
+    if(n=="" || s<=0){
+        result.innerHTML="Invalid Input";
+        return;
+    }
+
+    let emp=new Employee(n,s);
+    result.innerHTML="Name: "+emp.name+
+                     "<br>Net Salary: ₹"+emp.netSalary();
+}
+</script>
+
+</body>
+</html>
