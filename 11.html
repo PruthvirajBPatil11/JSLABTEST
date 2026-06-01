@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Resume Builder</h2>
+
+<input type="text" id="name" placeholder="Name"><br><br>
+
+<input type="text" id="skill" placeholder="Skill"><br><br>
+
+<input type="text" id="project" placeholder="Project"><br><br>
+
+<input type="text" id="cert" placeholder="Certificate"><br><br>
+
+<button onclick="showResume()">Generate Resume</button>
+
+<div id="resume"></div>
+
+<script>
+function showResume(){
+
+    let n = document.getElementById("name").value;
+
+    let s = document.getElementById("skill").value;
+
+    let p = document.getElementById("project").value;
+
+    let c = document.getElementById("cert").value;
+
+    document.getElementById("resume").innerHTML =
+
+    "<h3>" + n + "</h3>" +
+
+    "<p><b>Skill:</b> " + s + "</p>" +
+
+    "<p><b>Project:</b> " + p + "</p>" +
+
+    "<p><b>Certificate:</b> " + c + "</p>";
+}
+</script>
+
+</body>
+</html>
